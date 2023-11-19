@@ -1,9 +1,45 @@
 <template>
-   <div>
+<div>
+	<div class="top_row">
+
+	</div>
+    <div class="wrap">
+        <header id="header">
+            <div class="container">
+
+                        <nav id="primary-nav" class="dropdown cf">
+                            <ul class="dropdown menu">
+                                <li class='menu-button' id="main"><a href="{%url 'mainpage'%}">Главная</a></li>
+                                <li class='menu-button' id="exr"><a href="{%url 'exr' %}">Упражнения</a></li>
+                                <li class='menu-button' id="progs"><a href="{%url 'progs' %}">Программы тренировок</a></li>
+                                <li class='menu-button' id="about"><a href="{%url 'about' %}">О нас</a></li>
+                                <li class='menu-button' id="login"><a href="{%url 'users'%}">Вход</a></li>
+                            </ul>
+                        </nav>
+
+            </div>
+        </header>
+    </div>
+
+    <div>
     <h1>Welcome</h1>
     <NuxtLink :to="{name: 'auth-register'}">Register</NuxtLink>
     <NuxtLink :to="{name: 'auth-login'}">Login</NuxtLink>
-  </div>
+    </div>
+
+    <section class="banner" id="top">
+        <div class="container">
+            <div class="mid_row">
+
+            </div>
+        </div>
+    </section>
+
+
+    <div class="sub-footer">
+        <p></p>
+    </div>
+</div>
 </template>
 
 <script>

@@ -1,6 +1,3 @@
-from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound
-from .models import *
 from users import serializers
 from django.shortcuts import render
 from rest_framework import decorators as rest_decorators
@@ -19,12 +16,13 @@ def register(request):
     
     user = serializer.save()
     return response.Response(status=http_status.HTTP_201_CREATED)
+    
 
 class AccountTokenObtainPairViewSerializer(jwt_serializers.TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
-        
+
         token['username'] = user.username
 
         return token
@@ -38,7 +36,5 @@ class AccountTokenObtainPairView(jwt_views.TokenObtainPairView):
 def detail(request):
     serializer = serializers.AccountSerializer(request.user)
     return response.Response({"user": serializer.data})
-
-
 
 

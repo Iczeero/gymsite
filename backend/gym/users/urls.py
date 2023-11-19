@@ -1,11 +1,14 @@
-from django.urls import path, include
-from .views import *
+from users import views
+from django.contrib import admin
+from django.urls import include, path
 from rest_framework_simplejwt import views as jwt_views
 
 app_name = 'users'
 
 urlpatterns = [
-    #path('user', UserRetrieveUpdateAPIView.as_view()),
-    #path('users/', register, name = 'register'),
-    #path('users/login/', AccountTokenObtainPairView.as_view(), name = 'login'),
+  path('register', views.register, name='register'),
+  path('login', views.AccountTokenObtainPairView.as_view(), name='login'),
+  path('user', views.detail, name='user'),
+  path('refresh', jwt_views.TokenRefreshView.as_view(), name='refresh'),
+  path('logout', jwt_views.TokenBlacklistView.as_view(), name='logout'),
 ]
