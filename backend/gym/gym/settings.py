@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'gym.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gym_db',
+        'NAME': 'gym_db_test',
         'USER': 'postgres',
         'PASSWORD': '1',
         'HOST': 'localhost',
@@ -95,6 +95,8 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
+
+AUTH_USER_MODEL = 'users.User'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -134,11 +136,7 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ],
-}
+
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
