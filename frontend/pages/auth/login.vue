@@ -1,20 +1,28 @@
 <template>
-  <div>
-    <form @submit.prevent="submitForm">
-      <div>
-        <label>Email</label>
+  <div  id="form">
+    <label id="form-label">Вход</label>
+    <div id="form-text">
+    <form @submit.prevent="submitForm" >
+      <div id="form-field">
+        <label>Логин</label>
         <input type="text" v-model="login.email" />
       </div>
-      <div>
-        <label>Password</label>
+      <div id="form-field">
+        <label>Пароль</label>
         <input type="password" v-model="login.password" />
       </div>
-      <div>
-        <button type="submit">Submit</button>
+      <div id="form-button">
+        <button type="submit">Войти</button>
+        <li><nuxt-link to="/auth/register">Зарегистрироваться</nuxt-link></li>
       </div>
     </form>
+    </div>
   </div>
 </template>
+
+<style>
+@import url("~/static/main.css");
+</style>
 
 <script>
 export default {
@@ -42,3 +50,4 @@ methods: {
 }
 }
 </script>
+

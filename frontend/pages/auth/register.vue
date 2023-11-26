@@ -1,28 +1,36 @@
 <template>
-  <div>
+  <div  id="form">
+    <label id="form-label">Регистрация</label>
+    <div id="form-text">
     <form @submit.prevent="submitForm">
-      <div>
-        <label>Username</label>
+      <div id="form-field">
+        <label>Имя пользователя</label>
         <input type="text" v-model="register.username" />
       </div>
-      <div>
-        <label>Email</label>
+      <div id="form-field">
+        <label>Адрес электронной почты</label>
         <input type="text" v-model="register.email" />
       </div>
-      <div>
-        <label>Password</label>
+      <div id="form-field">
+        <label>Пароль</label>
         <input type="password" v-model="register.password" />
       </div>
-      <div>
-        <label>Confirm Password</label>
+      <div id="form-field">
+        <label>Подтверждение пароля</label>
         <input type="password" v-model="register.password2" />
       </div>
-      <div>
-        <button type="submit">Submit</button>
+      <div id="form-button">
+        <button type="submit">Зарегистрироваться</button>
       </div>
+      
     </form>
   </div>
+  </div>
 </template>
+
+<style>
+@import url("~/static/main.css");
+</style>
 
 <script>
 export default {
