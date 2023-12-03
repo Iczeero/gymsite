@@ -32,3 +32,4 @@ class Programs(models.Model):
     name = models.CharField(max_length=255)
     type = models.CharField(max_length=255)
 
+#user_id = models.ForeignKey('Users', on_delete=models.PROTECT)
