@@ -7,6 +7,7 @@ urlpatterns = [
     path('exercises/', exr, name = 'exr'),
     path('programs/', progs, name = 'progs'),
     path('about/', about, name = 'about'),
+    path('exercis/', exercisView, name='exercis')
 ]
 
 handler404 = errorNotFound

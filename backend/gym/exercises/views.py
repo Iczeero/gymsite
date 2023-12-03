@@ -1,6 +1,15 @@
 from django.shortcuts import render 
+from .models import Exercis
+
 from django.http import HttpResponse, HttpResponseNotFound
 menu = ["Главная", "Упражнения", "Программы тренировок", "О нас", "Вход"]
+
+def exercisView (request):
+    product = Exercis.objects.all()
+    context = {
+        'pr' : product
+    }
+    return render (request,'users/erx.html', context, {'menu': menu})
 
 def index(request):
     return render(request, 'users/index.html', {'menu': menu})
