@@ -8,8 +8,8 @@ urlpatterns = [
     path('exercises/', exr, name = 'exr'),
     path('programs/', progs, name = 'progs'),
     path('about/', about, name = 'about'),
-    path('exercis/v1/exerciseslist/', ExercisAPIView.as_view(), name='exercis'),
-    path('exercis/v1/exerciseslist/<int:pk>', ExercisAPIView.as_view(), name='exercis')
+    path('exercis', ExercisAPIView.as_view(), name='exercis'),
+    path('exercis/exerciseslist/<int:pk>', ExercisAPIView.as_view(), name='exercis')
 
 ]
 

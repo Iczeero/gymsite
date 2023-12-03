@@ -152,3 +152,12 @@ body {
     background-color: #FFFFFF;
     outline: none;
   }
+
+  .content
+  {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10em;
+    margin-bottom: auto;
+    text-align: center;
+  }

@@ -1,5 +1,5 @@
 from django.db import models
-from users.models import *
+from users.models import Account
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 class Exercis(models.Model):
@@ -7,14 +7,14 @@ class Exercis(models.Model):
     description = models.TextField()
     group = models.CharField(max_length=20)
     img = models.ImageField(default='no_image.jpg', upload_to='product_image')
-    is_checked = models.BooleanField()
     def _str_(self):
         return f'{self.name}'
-'''
+
 class UsersExercises(models.Model):
-    user_id = models.ForeignKey(Account, on_delete=models.PROTECT)
-    exercis_id = models.ForeignKey('Exercis', on_delete=models.PROTECT)
-'''
+    user_id = models.ManyToManyField(Account)
+    exercis_id = models.ManyToManyField(Exercis)
+    is_checked = models.BooleanField()
+
 class Exercises(models.Model):
     name = models.CharField(max_length=255)
     type = models.CharField(max_length=255)

@@ -10,6 +10,11 @@ class ExercisAPIView(generics.ListCreateAPIView):
     queryset = Exercis.objects.all()
     serializer_class = ExercisSerializer
 
+class UsersExercisAPIView(generics.ListCreateAPIView):
+    user = Account.objects.get(id=1)
+    queryset = UsersExercises.objects.all()
+    serializer_class = UsersExercisesSerializer
+
 def index(request):
     return render(request, 'users/index.html', {'menu': menu})
 

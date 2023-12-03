@@ -4,7 +4,7 @@
       {{ user?.username }}
       {{ user?.email }}
       {{ user?.is_admin }}
-      {{ user?.exerсises }}
+      {{ user?.exercises }}
       <button type="button" class="btn btn-danger" @click="logout">Logout</button> 
       <NuxtLink :to="{name: 'index'}">Back to Home</NuxtLink>   
     </div>
