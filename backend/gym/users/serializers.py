@@ -1,6 +1,7 @@
 from users.models import Account
 from django.conf import settings
 from rest_framework import serializers
+import exercises.models
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -27,8 +28,14 @@ class RegisterSerializer(serializers.ModelSerializer):
 
         return user
     
+
+
   
 class AccountSerializer(serializers.ModelSerializer):
+    #exerсises = ExercisSerializer(many=True, read_only=False)
+
+
     class Meta:
         model = Account
-        fields = ['id', 'username', 'email']
+        fields = ['id', 'username', 'email', 'is_admin', 'exerсises']
+        

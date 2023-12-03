@@ -1,15 +1,14 @@
 from django.shortcuts import render 
-from .models import Exercis
+from .models import *
+from .serializers import *
+from rest_framework import response, generics
 
 from django.http import HttpResponse, HttpResponseNotFound
 menu = ["Главная", "Упражнения", "Программы тренировок", "О нас", "Вход"]
 
-def exercisView (request):
-    product = Exercis.objects.all()
-    context = {
-        'pr' : product
-    }
-    return render (request,'users/erx.html', context, {'menu': menu})
+class ExercisAPIView(generics.ListCreateAPIView):
+    queryset = Exercis.objects.all()
+    serializer_class = ExercisSerializer
 
 def index(request):
     return render(request, 'users/index.html', {'menu': menu})

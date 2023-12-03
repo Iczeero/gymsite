@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
+import exercises.models
 
 
 class AccountManager(BaseUserManager):
@@ -38,6 +39,7 @@ class Account(AbstractBaseUser):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     last_login_at = models.DateTimeField(auto_now=True)
+    exerсises = models.ManyToManyField(exercises.models.Exercis)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ('username',)

@@ -1,8 +1,9 @@
 from users import serializers
 from django.shortcuts import render
+import exercises.models
 from rest_framework import decorators as rest_decorators
 from rest_framework import permissions as rest_permissions
-from rest_framework import response
+from rest_framework import response, generics
 from rest_framework import status as http_status
 from rest_framework_simplejwt import serializers as jwt_serializers
 from rest_framework_simplejwt import views as jwt_views
@@ -36,5 +37,7 @@ class AccountTokenObtainPairView(jwt_views.TokenObtainPairView):
 def detail(request):
     serializer = serializers.AccountSerializer(request.user)
     return response.Response({"user": serializer.data})
+
+
 
 
