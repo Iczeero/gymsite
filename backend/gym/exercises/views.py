@@ -1,19 +1,31 @@
-from django.shortcuts import render 
+from django.shortcuts import render, get_object_or_404
 from .models import *
 from .serializers import *
-from rest_framework import response, generics
+from rest_framework import response, generics, permissions
 
 from django.http import HttpResponse, HttpResponseNotFound
 menu = ["Главная", "Упражнения", "Программы тренировок", "О нас", "Вход"]
 
 class ExercisAPIView(generics.ListCreateAPIView):
     queryset = Exercis.objects.all()
+    
     serializer_class = ExercisSerializer
 
-class UsersExercisAPIView(generics.ListCreateAPIView):
-    user = Account.objects.get(id=1)
+class UserExerciseView(generics.ListCreateAPIView):
+    serializer_class = UsersExercisesSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        user_id = self.request.user_id
+        return UsersExercises.objects.filter(user_id=user_id)
+
+    def perform_create(self, serializer):
+        serializer.save(user_id=self.request.user_id)
+
+class UserExerciseDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = UsersExercises.objects.all()
     serializer_class = UsersExercisesSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 def index(request):
     return render(request, 'users/index.html', {'menu': menu})

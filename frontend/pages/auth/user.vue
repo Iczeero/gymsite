@@ -4,7 +4,6 @@
       {{ user?.username }}
       {{ user?.email }}
       {{ user?.is_admin }}
-      {{ user?.exercises }}
       <button type="button" class="btn btn-danger" @click="logout">Logout</button> 
       <NuxtLink :to="{name: 'index'}">Back to Home</NuxtLink>   
     </div>
@@ -22,7 +21,7 @@ export default {
 
     user(){
       return this.$auth.user
-    }
+    },
   },
 
   methods:{

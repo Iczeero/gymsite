@@ -9,7 +9,9 @@ urlpatterns = [
     path('programs/', progs, name = 'progs'),
     path('about/', about, name = 'about'),
     path('exercis', ExercisAPIView.as_view(), name='exercis'),
-    path('exercis/exerciseslist/<int:pk>', ExercisAPIView.as_view(), name='exercis')
+    path('exercis/exerciseslist/<int:pk>', ExercisAPIView.as_view(), name='exercis'),
+    path('user_exercises', UserExerciseView.as_view(), name='user-exercise-list-create'),
+    path('user_exercises/<int:pk>/', UserExerciseDetailView.as_view(), name='user-exercise-detail'),
 
 ]
 
