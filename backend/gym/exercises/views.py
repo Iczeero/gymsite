@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import *
 from .serializers import *
+from rest_framework import status as http_status
 from rest_framework import response, generics, permissions
 
 from django.http import HttpResponse, HttpResponseNotFound
@@ -21,6 +22,13 @@ class UserExerciseView(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(user_id=self.request.user_id)
+
+def addExercisView(request):
+    serializer = serializers.AddExercisSerializer(data = request.data)
+    #serializer.is_valid(raise_exception=True)
+    
+    exercis = serializer.save()
+    return response.Response(status=http_status.HTTP_201_CREATED)
 
 class UserExerciseDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = UsersExercises.objects.all()

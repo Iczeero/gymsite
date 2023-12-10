@@ -43,4 +43,3 @@
   <style>
   @import url("~/static/main.css");
   </style>
-

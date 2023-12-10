@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="exercise in exercises" :key="exercise.id">
-      <button @click="showModal(exercise)">{{ exercise.name }}</button>
+      <button class="exercise" @click="showModal(exercise)">{{ exercise.name }}</button>
     </div>
     <div v-if="isModalVisible" class="modal" @click="closeModalOutside">
       <div class="modal-content" @click.stop>
@@ -79,6 +79,21 @@ export default {
 
 <style>
 /* Стили для модального окна */
+.exercise
+{
+  display: inline-block;
+    background-color: #FFFFFF;
+    color: rgba(0, 0, 0);
+    width: 75em;
+    font-size: 15px;
+    border-radius:45px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 1em;
+    border: 1px solid #E2E2E2;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .modal {
   position: fixed;
   top: 0;
