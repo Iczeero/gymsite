@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div v-if="user?.is_admin"><li class='addButton'><NuxtLink to="admin/add" >Добавить</NuxtLink></li></div>
     <div v-for="exercise in exercises" :key="exercise.id">
       <button class="exercise" @click="showModal(exercise)">{{ exercise.name }}</button>
     </div>
@@ -79,6 +80,31 @@ export default {
 
 <style>
 /* Стили для модального окна */
+
+.addButton
+{
+  display: inline-block;
+    
+}
+
+.addButton a
+{
+  display: inline-block;
+    color: #FFFFFF;
+    background-color: #3F3F3F;
+    border: 1px solid #0f0202;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15em;
+    height: 2em;
+    font-size: 15px;
+    border-radius:45px;
+    box-shadow: 0 4px 4px rgba(0,  0, 0, 0.25);
+    text-decoration: none;
+    margin-top: 1em;
+    text-align: center; 
+}
+
 .exercise
 {
   display: inline-block;

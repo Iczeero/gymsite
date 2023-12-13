@@ -6,7 +6,7 @@ from .models import *
 class ExercisSerializer(serializers.ModelSerializer):
     class Meta:
         model = Exercis
-        fields = '__all__'
+        fields = ('name', 'description', 'group')
 
 class UsersExercisesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,10 +17,7 @@ class AddExercisSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Exercis
-        fields = ('name', 'description', 'group', 'img')
+        fields = ('name', 'description', 'group')
 
-    def save(self):
-        exercis = Exercis(name = self.validated_data['name'], description = self.validated_data['description'], group = self.validated_data['group'], img = self.validated_data['img'])
-        exercis.save()
-
-        return exercis
+    def create(self, validated_data):
+        return super().create(validated_data)

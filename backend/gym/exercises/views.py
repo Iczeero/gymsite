@@ -3,6 +3,10 @@ from .models import *
 from .serializers import *
 from rest_framework import status as http_status
 from rest_framework import response, generics, permissions
+from rest_framework import decorators as rest_decorators
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
 
 from django.http import HttpResponse, HttpResponseNotFound
 menu = ["Главная", "Упражнения", "Программы тренировок", "О нас", "Вход"]
@@ -23,12 +27,19 @@ class UserExerciseView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(user_id=self.request.user_id)
 
+
+@csrf_exempt
+@rest_decorators.api_view(['POST'])
+@rest_decorators.permission_classes([])
 def addExercisView(request):
-    serializer = serializers.AddExercisSerializer(data = request.data)
-    #serializer.is_valid(raise_exception=True)
-    
-    exercis = serializer.save()
-    return response.Response(status=http_status.HTTP_201_CREATED)
+    exercis = json.loads(request.body)
+    serializer = ExercisSerializer(data = exercis)
+    if serializer.is_valid():
+        serializer.save()
+        return JsonResponse(serializer.data, status=201)
+    else:
+        print(serializer.errors)
+        return JsonResponse(serializer.data, status=400)
 
 class UserExerciseDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = UsersExercises.objects.all()
