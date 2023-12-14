@@ -25,18 +25,18 @@
   
   
   
-      <section class="banner" id="top">
-          <div class="container">
-              <div class="mid_row">
+      
+          <div class="container" id="mid-row">
+              
                 <Nuxt></Nuxt>
-              </div>
+              
           </div>
-      </section>
+      
   
   
-      <div class="sub-footer">
+      <footer class="sub-footer">
           <p></p>
-      </div>
+      </footer>
     </div>
   </template>
   

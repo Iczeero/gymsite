@@ -8,7 +8,7 @@
         <input type="text" v-model="register.username" />
       </div>
       <div id="form-field">
-        <label>Адрес электронной почты</label>
+        <label>Электронная почта</label>
         <input type="text" v-model="register.email" />
       </div>
       <div id="form-field">
