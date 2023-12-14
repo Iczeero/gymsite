@@ -25,21 +25,22 @@
   
   
   
-      
-          <div class="container" id="mid-row">
-              
+      <section class="banner" id="top">
+          <div class="container">
+              <div class="mid_row">
                 <Nuxt></Nuxt>
-              
+              </div>
           </div>
-      
+      </section>
   
   
-      <footer class="sub-footer">
+      <div class="sub-footer">
           <p></p>
-      </footer>
+      </div>
     </div>
   </template>
   
   <style>
   @import url("~/static/main.css");
   </style>
+

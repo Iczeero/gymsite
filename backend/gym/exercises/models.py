@@ -17,16 +17,10 @@ class Exercis(models.Model):
 class UsersExercises(models.Model):
     user_id = models.ForeignKey(Account, on_delete=models.PROTECT)
     exercis_id = models.ForeignKey(Exercis, on_delete=models.PROTECT)
-    is_checked = models.BooleanField()
 
-class Exercises(models.Model):
-    name = models.CharField(max_length=255)
-    type = models.CharField(max_length=255)
 
 class Programs(models.Model):
     name = models.CharField(max_length=255)
     type = models.CharField(max_length=255)
 
-class programs_exercises(models.Model):
-    program_id = models.ForeignKey('Programs', on_delete=models.PROTECT)
-    exercis_id = models.ForeignKey('Exercises', on_delete=models.PROTECT)
+
